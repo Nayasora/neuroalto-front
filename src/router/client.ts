@@ -14,21 +14,6 @@ export const clientRoutes: RouteRecordRaw[] = [
         name: 'ClientDashboard',
         component: () => import('@/pages/client/Dashboard.vue')
       },
-      {
-        path: 'profile',
-        name: 'ClientProfile',
-        component: () => import('@/pages/client/Profile/ProfileView.vue')
-      },
-      {
-        path: 'profile/edit',
-        name: 'ClientProfileEdit',
-        component: () => import('@/pages/client/Profile/ProfileEdit.vue')
-      },
-      {
-        path: 'settings',
-        name: 'ClientSettings',
-        component: () => import('@/pages/client/Settings/SettingsMain.vue')
-      }
     ]
   }
 ]

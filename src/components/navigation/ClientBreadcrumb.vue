@@ -1,14 +1,14 @@
 <template>
   <Breadcrumb>
     <BreadcrumbList>
-      <BreadcrumbItem>
+      <BreadcrumbItem class="hidden md:block">
         <BreadcrumbLink as-child>
           <router-link to="/client/dashboard">Главная</router-link>
         </BreadcrumbLink>
       </BreadcrumbItem>
       
       <template v-for="(item, index) in breadcrumbItems" :key="item.path">
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator class="hidden md:block" />
         <BreadcrumbItem>
           <BreadcrumbLink v-if="index < breadcrumbItems.length - 1" as-child>
             <router-link :to="item.path">{{ item.title }}</router-link>
@@ -43,8 +43,18 @@ const routeMap: Record<string, string> = {
   '/client/dashboard': 'Панель управления',
   '/client/profile': 'Профиль',
   '/client/profile/edit': 'Редактировать профиль',
-  '/client/orders': 'Заказы',
-  '/client/settings': 'Настройки'
+  '/client/settings': 'Настройки',
+  '/client/settings/general': 'Общие настройки',
+  '/client/settings/security': 'Безопасность',
+  '/client/settings/notifications': 'Уведомления',
+  '/client/reports': 'Отчеты',
+  '/client/reports/analytics': 'Аналитика',
+  '/client/reports/stats': 'Статистика',
+  '/client/reports/export': 'Экспорт данных',
+  '/client/documents': 'Документы',
+  '/client/documents/my': 'Мои документы',
+  '/client/documents/shared': 'Общие документы',
+  '/client/documents/archive': 'Архив'
 }
 
 const breadcrumbItems = computed<BreadcrumbItem[]>(() => {
