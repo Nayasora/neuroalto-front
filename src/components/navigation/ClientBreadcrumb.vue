@@ -40,21 +40,7 @@ interface BreadcrumbItem {
 }
 
 const routeMap: Record<string, string> = {
-  '/client/dashboard': 'Панель управления',
-  '/client/profile': 'Профиль',
-  '/client/profile/edit': 'Редактировать профиль',
-  '/client/settings': 'Настройки',
-  '/client/settings/general': 'Общие настройки',
-  '/client/settings/security': 'Безопасность',
-  '/client/settings/notifications': 'Уведомления',
-  '/client/reports': 'Отчеты',
-  '/client/reports/analytics': 'Аналитика',
-  '/client/reports/stats': 'Статистика',
-  '/client/reports/export': 'Экспорт данных',
-  '/client/documents': 'Документы',
-  '/client/documents/my': 'Мои документы',
-  '/client/documents/shared': 'Общие документы',
-  '/client/documents/archive': 'Архив'
+  '/client/dashboard': 'Панель управления'
 }
 
 const breadcrumbItems = computed<BreadcrumbItem[]>(() => {

@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { ChevronsUpDown, Brain } from 'lucide-vue-next'
 import { type Component, ref } from 'vue'
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
@@ -14,7 +9,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
 } from '@/components/ui/sidebar'
 
 const props = defineProps<{
@@ -25,7 +19,6 @@ const props = defineProps<{
   }[]
 }>()
 
-const { isMobile } = useSidebar()
 const activeTeam = ref(props.teams[0])
 </script>
 
@@ -47,39 +40,9 @@ const activeTeam = ref(props.teams[0])
               </span>
               <span class="truncate text-xs">{{ activeTeam.plan }}</span>
             </div>
-            <ChevronsUpDown class="ml-auto" />
           </SidebarMenuButton>
         </DropdownMenuTrigger>
-        <DropdownMenuContent
-          class="w-[--reka-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-          align="start"
-          :side="isMobile ? 'bottom' : 'right'"
-          :side-offset="4"
-        >
-          <DropdownMenuLabel class="text-xs text-muted-foreground">
-            Организация
-          </DropdownMenuLabel>
-          <DropdownMenuItem
-            v-for="(team) in teams"
-            :key="team.name"
-            class="gap-2 p-2"
-            @click="activeTeam = team"
-          >
-            <div class="flex size-6 items-center justify-center rounded-sm border">
-              <component :is="team.logo" class="size-4 shrink-0" />
-            </div>
-            {{ team.name }}
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem class="gap-2 p-2" disabled>
-            <div class="flex size-6 items-center justify-center rounded-md border bg-background">
-              <Brain class="size-4" />
-            </div>
-            <div class="font-medium text-muted-foreground">
-              Панель клиента
-            </div>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
+       
       </DropdownMenu>
     </SidebarMenuItem>
   </SidebarMenu>
