@@ -8,7 +8,6 @@ import {
 } from '@/components/ui/collapsible'
 import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -46,7 +45,6 @@ const isSubItemActive = (subItemUrl: string) => {
 
 <template>
   <SidebarGroup>
-    <SidebarGroupLabel>Навигация</SidebarGroupLabel>
     <SidebarMenu>
       <Collapsible
         v-for="item in items"
