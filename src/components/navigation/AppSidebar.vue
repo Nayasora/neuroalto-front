@@ -7,6 +7,7 @@ import {
   User,
   FileText,
   BarChart3,
+    MessageSquare,
 } from 'lucide-vue-next'
 
 import NavMain from './NavMain.vue'
@@ -96,6 +97,25 @@ const data = {
         {
           title: 'Архив',
           url: '/client/documents/archive',
+        },
+      ],
+    },
+    {
+      title: 'Каналы',
+      url: '/client/channels',
+      icon: MessageSquare,
+      items: [
+        {
+          title: 'WhatsApp',
+          url: '/client/channels/whatsapp',
+        },
+        {
+          title: 'Telegram',
+          url: '/client/channels/telegram',
+        },
+        {
+          title: 'Instagram',
+          url: '/client/channels/instagram',
         },
       ],
     },
