@@ -14,6 +14,11 @@ export const clientRoutes: RouteRecordRaw[] = [
         name: 'ClientDashboard',
         component: () => import('@/pages/client/Dashboard.vue')
       },
+      {
+        path: 'channels/instagram',
+        name: 'ClientChannelsInstagram',
+        component: () => import('@/pages/client/Channels/Instagram.vue')
+      },
     ]
   }
 ]

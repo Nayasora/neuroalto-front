@@ -16,6 +16,10 @@ import {
   SidebarRail,
 } from '@/components/ui/sidebar'
 
+import {
+  MessageSquare,
+} from 'lucide-vue-next'
+
 const props = withDefaults(defineProps<SidebarProps>(), {
   collapsible: 'icon',
 })
@@ -40,6 +44,25 @@ const data = {
       url: '/client/dashboard',
       icon: Home,
       isActive: true,
+    },
+    {
+      title: 'Каналы',
+      url: '/client/channels',
+      icon: MessageSquare,
+      items: [
+        {
+          title: 'WhatsApp',
+          url: '/client/channels/whatsapp',
+        },
+        {
+          title: 'Telegram',
+          url: '/client/channels/telegram',
+        },
+        {
+          title: 'Instagram',
+          url: '/client/channels/instagram',
+        },
+      ],
     },
   ],
 }
