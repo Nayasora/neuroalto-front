@@ -3,6 +3,10 @@ import type { SidebarProps } from '@/components/ui/sidebar'
 import {
   Brain,
   Home,
+  MessageCircle,
+  Send,
+  Camera,
+  MessageSquare,
 } from 'lucide-vue-next'
 
 import NavMain from './NavMain.vue'
@@ -16,15 +20,11 @@ import {
   SidebarRail,
 } from '@/components/ui/sidebar'
 
-import {
-  MessageSquare,
-} from 'lucide-vue-next'
 
 const props = withDefaults(defineProps<SidebarProps>(), {
   collapsible: 'icon',
 })
 
-// Данные для NeuroAlto
 const data = {
   user: {
     name: 'Пользователь',
@@ -53,14 +53,17 @@ const data = {
         {
           title: 'WhatsApp',
           url: '/client/channels/whatsapp',
+          icon: MessageCircle,
         },
         {
           title: 'Telegram',
           url: '/client/channels/telegram',
+          icon: Send,
         },
         {
           title: 'Instagram',
           url: '/client/channels/instagram',
+          icon: Camera,
         },
       ],
     },

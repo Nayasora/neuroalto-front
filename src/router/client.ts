@@ -19,6 +19,16 @@ export const clientRoutes: RouteRecordRaw[] = [
         name: 'ClientChannelsInstagram',
         component: () => import('@/pages/client/Channels/Instagram.vue')
       },
+      {
+        path: 'channels/whatsapp',
+        name: 'ClientChannelsWhatsApp',
+        component: () => import('@/pages/client/Channels/WhatsApp.vue')
+      },
+      {
+        path: 'channels/telegram',
+        name: 'ClientChannelsTelegram',
+        component: () => import('@/pages/client/Channels/Telegram.vue')
+      },
     ]
   }
 ]

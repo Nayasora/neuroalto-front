@@ -16,7 +16,7 @@ import {
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar'
 
-const props = defineProps<{
+defineProps<{
   items: {
     title: string
     url: string
@@ -25,6 +25,7 @@ const props = defineProps<{
     items?: {
       title: string
       url: string
+      icon?: LucideIcon
     }[]
   }[]
 }>()
@@ -85,6 +86,7 @@ const isSubItemActive = (subItemUrl: string) => {
                   :is-active="isSubItemActive(subItem.url)"
                 >
                   <router-link :to="subItem.url">
+                    <component :is="subItem.icon" v-if="subItem.icon" />
                     <span>{{ subItem.title }}</span>
                   </router-link>
                 </SidebarMenuSubButton>
