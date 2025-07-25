@@ -125,18 +125,30 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const chats = ref([
+interface Chat {
+  id: number
+  name: string
+  avatar: string
+}
+
+interface Message {
+  id: number
+  text: string
+  sender: string
+}
+
+const chats = ref<Chat[]>([
   { id: 1, name: 'Elon Musk', avatar: 'https://placekitten.com/g/200/200' },
   { id: 2, name: 'Jeff Bezos', avatar: 'https://placekitten.com/g/201/201' },
   { id: 3, name: 'Bill Gates', avatar: 'https://placekitten.com/g/202/202' },
   { id: 4, name: 'Mark Zuckerberg', avatar: 'https://placekitten.com/g/203/203' },
 ])
 
-const selectedChat = ref(null)
+const selectedChat = ref<Chat | null>(null)
 
-const messages = ref([])
+const messages = ref<Message[]>([])
 
-const allMessages = {
+const allMessages: Record<number, Message[]> = {
   1: [
     { id: 1, text: 'Привет! Как дела?', sender: 'Elon Musk' },
     { id: 2, text: 'Привет! Все отлично, спасибо!', sender: 'me' },
@@ -155,7 +167,7 @@ const allMessages = {
   4: [],
 }
 
-const selectChat = (chat) => {
+const selectChat = (chat: Chat) => {
   selectedChat.value = chat
   messages.value = allMessages[chat.id] || []
 }

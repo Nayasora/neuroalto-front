@@ -20,3 +20,18 @@ export interface EmailFormData {
 export interface OTPFormData {
   code: string
 }
+
+export interface AuthResponse {
+  success: boolean
+  message?: string
+  token?: string
+}
+
+export interface OTPRequest {
+  email: string
+}
+
+export interface OTPVerifyRequest {
+  email: string
+  code: string
+}

@@ -54,9 +54,6 @@ const handleBack = () => {
   emit('back')
 }
 
-const focusInput = () => {
-  pinInputRef.value?.focus()
-}
 </script>
 
 <template>
@@ -85,7 +82,7 @@ const focusInput = () => {
             :length="6" 
             :disabled="isLoading"
             placeholder="●"
-            type="number"
+            type="text"
             class="gap-2"
             @complete="handleSubmit"
           >

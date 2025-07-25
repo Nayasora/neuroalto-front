@@ -1,6 +1,8 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import type { OTPAuthState, OTPAuthResponse, EmailFormData, OTPFormData } from '@/types/auth'
+import type { OTPAuthState, EmailFormData, OTPFormData } from '@/types/auth'
+import { authService } from '@/services'
+import { AxiosError } from 'axios'
 
 export function useOTPAuth() {
   const router = useRouter()
@@ -33,12 +35,9 @@ export function useOTPAuth() {
     state.value.error = null
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500))
-
-      const response: OTPAuthResponse = {
-        success: true,
-        message: 'Код отправлен на вашу почту'
-      }
+      const response = await authService.sendOTP({
+        email: formData.email
+      })
 
       if (response.success) {
         state.value.email = formData.email
@@ -48,7 +47,11 @@ export function useOTPAuth() {
         throw new Error(response.message || 'Ошибка отправки кода')
       }
     } catch (error) {
-      state.value.error = error instanceof Error ? error.message : 'Произошла ошибка'
+      if (error instanceof AxiosError) {
+        state.value.error = error.response?.data?.message || error.message
+      } else {
+        state.value.error = error instanceof Error ? error.message : 'Произошла ошибка'
+      }
     } finally {
       state.value.isLoading = false
     }
@@ -63,13 +66,10 @@ export function useOTPAuth() {
     state.value.error = null
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500))
-
-      const response: OTPAuthResponse = {
-        success: true,
-        token: 'mock-jwt-token',
-        message: 'Авторизация успешна'
-      }
+      const response = await authService.verifyOTP({
+        email: state.value.email,
+        code: formData.code
+      })
 
       if (response.success) {
         state.value.otpCode = formData.code
@@ -83,7 +83,11 @@ export function useOTPAuth() {
         throw new Error(response.message || 'Неверный код')
       }
     } catch (error) {
-      state.value.error = error instanceof Error ? error.message : 'Произошла ошибка'
+      if (error instanceof AxiosError) {
+        state.value.error = error.response?.data?.message || error.message
+      } else {
+        state.value.error = error instanceof Error ? error.message : 'Произошла ошибка'
+      }
     } finally {
       state.value.isLoading = false
     }
